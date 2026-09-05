@@ -1,4 +1,4 @@
-# \# Arq\_de\_Computadoras
+## Arq\_de\_Computadoras
 
 # 
 
@@ -6,7 +6,7 @@
 
 # 
 
-# \## Contenido
+### Contenido
 
 # 
 
@@ -14,11 +14,11 @@
 
 # |---|---|
 
-# | \[`TP1/`](TP1) | ALU parametrizable: diseño, testbench y despliegue en placa Basys 3 |
+# | [`TP1/`](TP1) | ALU parametrizable: diseño, testbench y despliegue en placa Basys 3 |
 
 # 
 
-# \## Herramientas utilizadas
+### Herramientas utilizadas
 
 # 
 
