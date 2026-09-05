@@ -1,4 +1,4 @@
-\# TP1 — ALU parametrizable en FPGA
+# TP1 — ALU parametrizable en FPGA
 
 
 
