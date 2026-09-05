@@ -54,7 +54,7 @@ verificada con un testbench autoverificable y desplegada en una placa Basys 3.
 
 
 
-\## Simular con Icarus Verilog
+## Simular con Icarus Verilog
 
 
 
@@ -94,7 +94,7 @@ vvp sim\_top.vvp
 
 
 
-\## Mapeo de E/S en la placa
+## Mapeo de E/S en la placa
 
 
 
