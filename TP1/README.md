@@ -12,17 +12,17 @@ verificada con un testbench autoverificable y desplegada en una placa Basys 3.
 
 
 
-- `design\_sources/ALU.v` — módulo combinacional de la ALU (8 operaciones, ancho de datos parametrizable)
+- `design_sources/ALU.v` — módulo combinacional de la ALU (8 operaciones, ancho de datos parametrizable)
 
-- `design\_sources/Register.v` — registro genérico con enable y reset (retiene A, B y OP)
+- `design_sources/Register.v` — registro genérico con enable y reset (retiene A, B y OP)
 
-- `design\_sources/TOP.v` — módulo top-level: conecta switches/botones/LEDs a la ALU
+- `design_sources/TOP.v` — módulo top-level: conecta switches/botones/LEDs a la ALU
 
-- `simulation\_sources/tb\_ALU.v` — testbench autoverificable de la ALU (entradas aleatorias + modelo de referencia)
+- `simulation_sources/tb_ALU.v` — testbench autoverificable de la ALU (entradas aleatorias + modelo de referencia)
 
-- `simulation\_sources/tb\_Register.v` — testbench del registro
+- `simulation_sources/tb_Register.v` — testbench del registro
 
-- `simulation\_sources/tb\_TOP.v` — testbench de integración del sistema completo
+- `simulation_sources/tb_TOP.v` — testbench de integración del sistema completo
 
 - `constraints/config.xdc` — constraints de pines para la Basys 3
 
@@ -53,17 +53,17 @@ verificada con un testbench autoverificable y desplegada en una placa Basys 3.
 
 # ALU sola
 
-iverilog -o sim\_alu.vvp design\_sources/ALU.v simulation\_sources/tb\_ALU.v
+iverilog -o sim_alu.vvp design_sources/ALU.v simulation_sources/tb_ALU.v
 
-vvp sim\_alu.vvp
+vvp sim_alu.vvp
 
 
 
 # Sistema completo (TOP)
 
-iverilog -o sim\_top.vvp design\_sources/ALU.v design\_sources/Register.v design\_sources/TOP.v simulation\_sources/tb\_TOP.v
+iverilog -o sim_top.vvp design_sources/ALU.v design_sources/Register.v design_sources/TOP.v simulation_sources/tb_TOP.v
 
-vvp sim\_top.vvp
+vvp sim_top.vvp
 
 ```
 
@@ -75,9 +75,9 @@ vvp sim\_top.vvp
 
 1\. Crear proyecto en Vivado con part `xc7a35tcpg236-1`.
 
-2\. Agregar los archivos de `design\_sources/` como \*Design Sources\*.
+2\. Agregar los archivos de `design_sources/` como *Design Sources*.
 
-3\. Agregar `constraints/config.xdc` como \*Constraints\*.
+3\. Agregar `constraints/config.xdc` como *Constraints*.
 
 4\. Run Synthesis → Run Implementation → Generate Bitstream.
 
@@ -91,10 +91,10 @@ vvp sim\_top.vvp
 
 | Señal          | Botón/switch |
 |----------------|--------------|
-| `switches\[7:0]`| SW0–SW7      |
-| `btn\_a`        | BTNU (carga A) |
-| `btn\_b`        | BTND (carga B) |
-| `btn\_op`       | BTNL (carga OP) |
+| `switches[7:0]`| SW0–SW7      |
+| `btn_a`        | BTNU (carga A) |
+| `btn_b`        | BTND (carga B) |
+| `btn_op`       | BTNL (carga OP) |
 | `rst`          | BTNC         |
-| `leds\[7:0]`    | LD0–LD7      |
+| `leds[7:0]`    | LD0–LD7      |
 
