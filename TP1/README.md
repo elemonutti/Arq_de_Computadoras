@@ -33,23 +33,14 @@ verificada con un testbench autoverificable y desplegada en una placa Basys 3.
 
 
 | Operación | Código (OP) |
-
 |---|---|
-
 | ADD | 100000 |
-
 | SUB | 100010 |
-
 | AND | 100100 |
-
 | OR  | 100101 |
-
 | XOR | 100110 |
-
 | SRA | 000011 |
-
 | SRL | 000010 |
-
 | NOR | 100111 |
 
 
@@ -99,18 +90,11 @@ vvp sim\_top.vvp
 
 
 | Señal          | Botón/switch |
-
 |----------------|--------------|
-
 | `switches\[7:0]`| SW0–SW7      |
-
 | `btn\_a`        | BTNU (carga A) |
-
 | `btn\_b`        | BTND (carga B) |
-
 | `btn\_op`       | BTNL (carga OP) |
-
 | `rst`          | BTNC         |
-
 | `leds\[7:0]`    | LD0–LD7      |
 
