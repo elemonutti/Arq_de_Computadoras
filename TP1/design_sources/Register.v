@@ -12,7 +12,7 @@ module Register
     output reg  [NB-1:0] q
   );
 
-  always @(posedge clk or posedge rst) begin
+  always @(posedge clk) begin
     if (rst) begin
       q <= {NB{1'b0}};
     end else if (enable) begin
