@@ -1,3 +1,8 @@
+# TP2 — UART con Máquinas de Estado Finitas
+
+Implementación de una **UART** (Universal Asynchronous Receiver and Transmitter) en Verilog,
+diseñada con máquinas de estado finitas y conectada a la ALU del TP1. La PC envía los
+operandos y el código de operación por puerto serie, y la placa Basys 3 devuelve el resultado.
 
 ## Estructura
 
