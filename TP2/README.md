@@ -1,8 +1,8 @@
-\# TP2 — UART con Máquinas de Estado Finitas
+# TP2 — UART con Máquinas de Estado Finitas
 
 
 
-Implementación de una \*\*UART\*\* (Universal Asynchronous Receiver and Transmitter) en Verilog,
+Implementación de una **UART** (Universal Asynchronous Receiver and Transmitter) en Verilog,
 
 diseñada con máquinas de estado finitas y conectada a la ALU del TP1. La PC envía los
 
@@ -10,45 +10,45 @@ operandos y el código de operación por puerto serie, y la placa Basys 3 devuel
 
 
 
-\## Arquitectura
+## Arquitectura
 
 
 
 
 
-\## Estructura
+## Estructura
 
 
 
-\- `design\_sources/baud\_rate\_gen.v` — genera un tick 16 veces por bit (contador módulo 326 a 100 MHz / 19200 baudios)
+- `design_sources/baud_rate_gen.v` — genera un tick 16 veces por bit (contador módulo 326 a 100 MHz / 19200 baudios)
 
-\- `design\_sources/uart\_rx.v` — receptor: FSM `IDLE → START → DATA → STOP`, muestrea en la mitad de cada bit
+- `design_sources/uart_rx.v` — receptor: FSM `IDLE → START → DATA → STOP`, muestrea en la mitad de cada bit
 
-\- `design\_sources/uart\_tx.v` — transmisor: FSM `IDLE → START → DATA → STOP`, salida registrada
+- `design_sources/uart_tx.v` — transmisor: FSM `IDLE → START → DATA → STOP`, salida registrada
 
-\- `design\_sources/alu\_interface.v` — FSM propia: recibe A, B y OP, dispara la ALU y envía el resultado
+- `design_sources/alu_interface.v` — FSM propia: recibe A, B y OP, dispara la ALU y envía el resultado
 
-\- `design\_sources/ALU.v` — ALU del TP1, sin modificaciones
+- `design_sources/ALU.v` — ALU del TP1, sin modificaciones
 
-\- `design\_sources/uart\_top.v` — módulo top: conecta todos los bloques
+- `design_sources/uart_top.v` — módulo top: conecta todos los bloques
 
-\- `simulation\_sources/tb\_baud\_rate\_gen.v` — verifica que el tick salga cada 326 ciclos
+- `simulation_sources/tb_baud_rate_gen.v` — verifica que el tick salga cada 326 ciclos
 
-\- `simulation\_sources/tb\_uart\_loopback.v` — conecta Tx con Rx y verifica bytes de ida y vuelta
+- `simulation_sources/tb_uart_loopback.v` — conecta Tx con Rx y verifica bytes de ida y vuelta
 
-\- `simulation\_sources/tb\_uart\_top.v` — simula a la PC: envía A, B, OP por serie y verifica el resultado
+- `simulation_sources/tb_uart_top.v` — simula a la PC: envía A, B, OP por serie y verifica el resultado
 
-\- `constraints/uart\_top.xdc` — pines de la Basys 3 (clock, reset, USB-UART y LEDs)
+- `constraints/uart_top.xdc` — pines de la Basys 3 (clock, reset, USB-UART y LEDs)
 
-\- `pc/uart\_alu.py` — script de la PC para operar la ALU por puerto serie
-
-
-
-\## Protocolo
+- `pc/uart_alu.py` — script de la PC para operar la ALU por puerto serie
 
 
 
-Configuración serie: \*\*19200 baudios, 8 bits de datos, sin paridad, 1 stop bit (8N1)\*\*.
+## Protocolo
+
+
+
+Configuración serie: **19200 baudios, 8 bits de datos, sin paridad, 1 stop bit (8N1)**.
 
 
 
@@ -70,7 +70,7 @@ Además, los LEDs LD0–LD7 muestran el último resultado.
 
 
 
-\## Operaciones soportadas
+## Operaciones soportadas
 
 
 
@@ -96,11 +96,11 @@ Además, los LEDs LD0–LD7 muestran el último resultado.
 
 
 
-\## Simular
+## Simular
 
 
 
-En Vivado: elegir el testbench con \*Set as Top\* → \*Run Behavioral Simulation\* → en la Tcl Console, `run all`.
+En Vivado: elegir el testbench con *Set as Top* → *Run Behavioral Simulation* → en la Tcl Console, `run all`.
 
 
 
@@ -110,7 +110,7 @@ Con Icarus Verilog:
 
 ```bash
 
-iverilog -o sim.vvp -s tb\_uart\_top design\_sources/\*.v simulation\_sources/\*.v
+iverilog -o sim.vvp -s tb_uart_top design_sources/*.v simulation_sources/*.v
 
 vvp sim.vvp
 
@@ -118,19 +118,19 @@ vvp sim.vvp
 
 
 
-\## Implementar en la placa (Basys 3)
+## Implementar en la placa (Basys 3)
 
 
 
-1\. Crear proyecto en Vivado con part `xc7a35tcpg236-1`.
+1. Crear proyecto en Vivado con part `xc7a35tcpg236-1`.
 
-2\. Agregar `design\_sources/` como \*Design Sources\*, `simulation\_sources/` como \*Simulation Sources\* y `constraints/uart\_top.xdc` como \*Constraints\*.
+2. Agregar `design_sources/` como *Design Sources*, `simulation_sources/` como *Simulation Sources* y `constraints/uart_top.xdc` como *Constraints*.
 
-3\. Generate Bitstream y programar la placa desde el Hardware Manager.
+3. Generate Bitstream y programar la placa desde el Hardware Manager.
 
 
 
-\## Probar desde la PC
+## Probar desde la PC
 
 
 
@@ -138,17 +138,17 @@ vvp sim.vvp
 
 py -m pip install pyserial
 
-py -m serial.tools.list\_ports -v              # buscar el puerto de la Basys 3 (VID:PID 0403:6010)
+py -m serial.tools.list_ports -v              # buscar el puerto de la Basys 3 (VID:PID 0403:6010)
 
-py pc/uart\_alu.py COM5                        # modo interactivo
+py pc/uart_alu.py COM5                        # modo interactivo
 
-py pc/uart\_alu.py COM5 --test                 # prueba automática de las 8 operaciones
+py pc/uart_alu.py COM5 --test                 # prueba automática de las 8 operaciones
 
 ```
 
 
 
-\## Resultados
+## Resultados
 
 
 
@@ -156,13 +156,13 @@ py pc/uart\_alu.py COM5 --test                 # prueba automática de las 8 ope
 
 |---|---|
 
-| `tb\_baud\_rate\_gen` | 20/20 intervalos de 326 ciclos |
+| `tb_baud_rate_gen` | 20/20 intervalos de 326 ciclos |
 
-| `tb\_uart\_loopback` | 14/14 bytes sin errores |
+| `tb_uart_loopback` | 14/14 bytes sin errores |
 
-| `tb\_uart\_top` | 19/19 operaciones sin errores |
+| `tb_uart_top` | 19/19 operaciones sin errores |
 
-| Placa (`uart\_alu.py --test`) | 43/43 operaciones sin errores |
+| Placa (`uart_alu.py --test`) | 43/43 operaciones sin errores |
 
 | Utilización | 132 LUT, 81 FF |
 
@@ -170,7 +170,7 @@ py pc/uart\_alu.py COM5 --test                 # prueba automática de las 8 ope
 
 
 
-\## Mapeo de E/S en la placa
+## Mapeo de E/S en la placa
 
 
 
@@ -186,5 +186,5 @@ py pc/uart\_alu.py COM5 --test                 # prueba automática de las 8 ope
 
 | `tx` | USB-UART, FPGA → PC (A18) |
 
-| `leds\[7:0]` | LD0–LD7 |
+| `leds[7:0]` | LD0–LD7 |
 
