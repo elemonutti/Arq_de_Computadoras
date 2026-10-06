@@ -2,11 +2,7 @@
 
 
 
-Implementación de una **UART** (Universal Asynchronous Receiver and Transmitter) en Verilog,
-
-diseñada con máquinas de estado finitas y conectada a la ALU del TP1. La PC envía los
-
-operandos y el código de operación por puerto serie, y la placa Basys 3 devuelve el resultado.
+Implementación de una **UART** (Universal Asynchronous Receiver and Transmitter) en Verilog, diseñada con máquinas de estado finitas y conectada a la ALU del TP1. La PC envía los operandos y el código de operación por puerto serie, y la placa Basys 3 devuelve el resultado.
 
 
 
@@ -53,15 +49,10 @@ Configuración serie: **19200 baudios, 8 bits de datos, sin paridad, 1 stop bit 
 
 
 | Orden | Dirección | Contenido |
-
 |---|---|---|
-
 | 1 | PC → placa | Operando A (8 bits) |
-
 | 2 | PC → placa | Operando B (8 bits) |
-
 | 3 | PC → placa | Código de operación (6 bits bajos del byte) |
-
 | 4 | placa → PC | Resultado (8 bits) |
 
 
@@ -75,23 +66,14 @@ Además, los LEDs LD0–LD7 muestran el último resultado.
 
 
 | Operación | Código (OP) |
-
 |---|---|
-
 | ADD | 100000 |
-
 | SUB | 100010 |
-
 | AND | 100100 |
-
 | OR  | 100101 |
-
 | XOR | 100110 |
-
 | SRA | 000011 |
-
 | SRL | 000010 |
-
 | NOR | 100111 |
 
 
@@ -153,19 +135,12 @@ py pc/uart_alu.py COM5 --test                 # prueba automática de las 8 oper
 
 
 | Prueba | Resultado |
-
 |---|---|
-
 | `tb_baud_rate_gen` | 20/20 intervalos de 326 ciclos |
-
 | `tb_uart_loopback` | 14/14 bytes sin errores |
-
 | `tb_uart_top` | 19/19 operaciones sin errores |
-
 | Placa (`uart_alu.py --test`) | 43/43 operaciones sin errores |
-
 | Utilización | 132 LUT, 81 FF |
-
 | Timing | WNS = 4,353 ns, WHS = 0,178 ns (cumple a 100 MHz) |
 
 
@@ -175,16 +150,10 @@ py pc/uart_alu.py COM5 --test                 # prueba automática de las 8 oper
 
 
 | Señal | Recurso |
-
 |---|---|
-
 | `clk` | Oscilador de 100 MHz (W5) |
-
 | `reset` | BTNC (U18) |
-
 | `rx` | USB-UART, PC → FPGA (B18) |
-
 | `tx` | USB-UART, FPGA → PC (A18) |
-
 | `leds[7:0]` | LD0–LD7 |
 
